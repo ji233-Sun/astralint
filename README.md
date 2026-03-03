@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Astralint
+
+协作式图片拼图揭示应用。管理员上传源图拆分为网格，用户认领格子上传图片，审核通过后点亮，最终揭示完整图片。
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router) + React 19 + TypeScript 5
+- **UI**: MUI v7 + Emotion + Tailwind CSS v4
+- **Backend**: Supabase (Database + Storage + Realtime)
+- **Auth**: jose (JWT)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- npm
+- Supabase 项目（需要创建数据库表和 Storage buckets）
+
+### Setup
+
+1. 克隆仓库：
+
+```bash
+git clone https://github.com/ji233/astralint.git
+cd astralint
+```
+
+2. 安装依赖：
+
+```bash
+npm install
+```
+
+3. 配置环境变量：
+
+```bash
+cp .env.example .env.local
+```
+
+编辑 `.env.local`，填入你的 Supabase 项目凭据和自定义密钥。
+
+4. 启动开发服务器：
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 [http://localhost:3000](http://localhost:3000) 查看应用。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| 命令 | 说明 |
+| --- | --- |
+| `npm run dev` | 启动开发服务器 |
+| `npm run build` | 构建生产版本 |
+| `npm run start` | 启动生产服务器 |
+| `npm run lint` | ESLint 代码检查 |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── admin/          # 管理员页面（登录、仪表盘）
+├── api/            # API 路由
+├── components/     # 共享组件
+├── layout.tsx      # 根布局
+├── page.tsx        # 首页
+└── theme.ts        # MUI 主题配置
+lib/
+├── auth.ts         # JWT 认证工具
+├── grid.ts         # 网格计算工具
+├── types.ts        # TypeScript 类型定义
+└── supabase/       # Supabase 客户端（client / server / storage）
+proxy.ts            # 路由守卫（管理员鉴权）
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
