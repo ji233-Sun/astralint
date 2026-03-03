@@ -22,7 +22,7 @@
 1. 克隆仓库：
 
 ```bash
-git clone https://github.com/ji233/astralint.git
+git clone https://github.com/ji233-Sun/astralint.git
 cd astralint
 ```
 
